@@ -9,24 +9,24 @@
 
 int create_file(const char *filename, char *text_content)
 {
-	int mk;
-	int alpha;
-	int new;
+	int fd;
+	int alphabets;
+	int news;
 
 	if (!filename)
 		return (-1);
-	mk = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
+	fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
 
-	if (mk == -1)
+	if (fd == -1)
 		return (-1);
 	if (!text_content)
 		text_content = "";
-	for (alpha = 0; text_content[alpha]; alpha++)
+	for (alphabets = 0; text_content[alphabets]; alphabets++)
 		;
 
-	new = write(fd, text_content, alpha);
-	if (new == -1)
+	news = write(fd, text_content, alphabets);
+	if (news == -1)
 		return (-1);
-	close(mk);
+	close(fd);
 	return (1);
 }
